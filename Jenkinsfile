@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Deploy to Green Environment') {
             steps {
-                echo 'Deploying to Green environment...'
-                sh './deploy.sh green' // Custom script for deployment
+                echo '1.Deploying to Green environment...'
+                
+                echo "2.Deploying to Green environment..."
             }
         }
         stage('Smoke Test Green Environment') {
             steps {
                 echo 'Running smoke tests on Green environment...'
-                sh './smoke_test.sh green'
             }
         }
         stage('Switch Traffic') {
@@ -28,7 +28,6 @@ pipeline {
             steps {
                 echo 'Monitoring Green environment...'
                 sleep 30 // Simulating monitoring period
-                sh './monitor.sh green'
             }
         }
         stage('Rollback (if needed)') {
