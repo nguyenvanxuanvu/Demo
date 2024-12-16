@@ -4,7 +4,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                sh 'mvn clean package' // Example for a Java application
             }
         }
         stage('Deploy to Green Environment') {
