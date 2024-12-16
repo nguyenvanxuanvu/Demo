@@ -21,22 +21,13 @@ pipeline {
         stage('Switch Traffic') {
             steps {
                 echo 'Switching traffic to Green environment...'
-                sh './switch_traffic.sh green'
+                echo "Switching traffic back to Green environment..."
             }
         }
         stage('Monitor') {
             steps {
                 echo 'Monitoring Green environment...'
                 sleep 30 // Simulating monitoring period
-            }
-        }
-        stage('Rollback (if needed)') {
-            when {
-                expression { return currentBuild.result == 'FAILURE' }
-            }
-            steps {
-                echo 'Rolling back to Blue environment...'
-                sh './switch_traffic.sh blue'
             }
         }
     }
